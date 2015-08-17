@@ -112,15 +112,15 @@ class BoxViewController: NSViewController {
 
     override func viewWillLayout() {
         canvasSubLayer.frame = canvasView.bounds
-        //canvasSubLayer.frame = CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 300))
+        canvasSubLayer.frame = CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 300))
 
-//        let canvasCenter = CGPoint(x: canvasView.bounds.size.width / 2 - 150, y: canvasView.bounds.size.height / 2 - 150)
-//        side1.position = CGPoint(x: canvasCenter.x - 50, y: canvasCenter.y)
-//        side2.position = CGPoint(x: canvasCenter.x + 50, y: canvasCenter.y)
-//        side3.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
-//        side4.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y + 50)
-//        side5.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
-//        side6.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y)
+        let canvasCenter = CGPoint(x: canvasView.bounds.size.width / 2, y: canvasView.bounds.size.height / 2)
+        side1.position = CGPoint(x: canvasCenter.x - 50, y: canvasCenter.y)
+        side2.position = CGPoint(x: canvasCenter.x + 50, y: canvasCenter.y)
+        side3.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
+        side4.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y + 50)
+        side5.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
+        side6.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y)
     }
 
     @IBAction func showZChanged(sender: AnyObject) {
@@ -167,6 +167,10 @@ class BoxViewController: NSViewController {
         let angle = sqrt(disp.x * disp.x + disp.y * disp.y)
         println("angle: \(angle)")
         let transform = CATransform3DMakeRotation(CGFloat(degreesToRadians(Double(angle))), disp.y, disp.x, 0)
-        canvasSubLayer.transform = transform
+//        canvasSubLayer.transform = transform
+        let eyeZ = 500.0
+        var perspective = CATransform3DIdentity
+        perspective.m34 = -1.0 / CGFloat(eyeZ)
+        canvasSubLayer.sublayerTransform = CATransform3DConcat(transform, perspective)
     }
 }
