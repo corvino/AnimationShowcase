@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import AppKit
 
 class BoxViewController: NSViewController {
 
@@ -26,8 +25,13 @@ class BoxViewController: NSViewController {
     var side5 = CALayer()
     var side6 = CALayer()
 
+    var perspective = CATransform3DIdentity
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        perspective.m34 = -1.0 / 500.0
     }
 
     func addTextToSide(string : String, box : CALayer) {
@@ -45,58 +49,61 @@ class BoxViewController: NSViewController {
 
         if (nil == side1.superlayer) {
             view.layer?.backgroundColor = NSColor.blackColor().CGColor
-            let eyeZ = 500.0
-            var perspective = CATransform3DIdentity
-            perspective.m34 = -1.0 / CGFloat(eyeZ)
-            canvasView.layer?.masksToBounds = false
-            canvasView.layer?.sublayerTransform = perspective
-            canvasSubLayer.sublayerTransform = perspective
+            canvasSubLayer.frame = canvasView.bounds
 
             buttonBarView.layer?.backgroundColor = NSColor.whiteColor().CGColor
 
+            let boxSize = CGSize(width: 100, height: 100)
             side1.backgroundColor = NSColor.orangeColor().CGColor
             side1.borderWidth = 2
             side1.borderColor = NSColor.whiteColor().CGColor
-            side1.frame = CGRect(origin: CGPoint(x: 100, y: 150), size: CGSize(width: 100, height: 100))
+            side1.bounds = CGRect(origin: CGPointZero, size: boxSize)
             side1.anchorPoint = CGPoint(x: 1, y: 0.5)
             addTextToSide("1", box: side1)
 
             side2.backgroundColor = NSColor.greenColor().CGColor
             side2.borderWidth = 2
             side2.borderColor = NSColor.whiteColor().CGColor
-            side2.frame = CGRect(origin: CGPoint(x: 200, y: 150), size: CGSize(width: 100, height: 100))
+            side2.bounds = CGRect(origin: CGPointZero, size: boxSize)
             side2.anchorPoint = CGPoint(x: 0, y: 0.5)
             addTextToSide("2", box: side2)
 
             side3.backgroundColor = NSColor.blueColor().CGColor
             side3.borderWidth = 2
             side3.borderColor = NSColor.whiteColor().CGColor
-            side3.frame = CGRect(origin: CGPoint(x: 150, y: 100), size: CGSize(width: 100, height: 100))
+            side3.bounds = CGRect(origin: CGPointZero, size: boxSize)
             side3.anchorPoint = CGPoint(x: 0.5, y: 1)
             addTextToSide("3", box: side3)
 
             side4.backgroundColor = NSColor.cyanColor().CGColor
             side4.borderWidth = 2
             side4.borderColor = NSColor.whiteColor().CGColor
-            side4.frame = CGRect(origin: CGPoint(x: 150, y: 200), size: CGSize(width: 100, height: 100))
+            side4.bounds = CGRect(origin: CGPointZero, size: boxSize)
             side4.anchorPoint = CGPoint(x: 0.5, y: 0)
             addTextToSide("4", box: side4)
 
             side5.backgroundColor = NSColor.brownColor().CGColor
             side5.borderWidth = 2
             side5.borderColor = NSColor.whiteColor().CGColor
-            side5.frame = CGRect(origin: CGPoint(x: 150, y: 100), size: CGSize(width: 100, height: 100))
+            side5.bounds = CGRect(origin: CGPointZero, size: boxSize)
             side5.anchorPoint = CGPoint(x: 0.5, y: 0)
             addTextToSide("5", box: side5)
 
             side6.backgroundColor = NSColor.redColor().CGColor
             side6.borderWidth = 2
             side6.borderColor = NSColor.whiteColor().CGColor
-            side6.frame = CGRect(origin: CGPoint(x: 150, y: 150), size: CGSize(width: 100, height: 100))
+            side6.bounds = CGRect(origin: CGPointZero, size: boxSize)
             addTextToSide("6", box: side6)
 
-            canvasView.layer?.addSublayer(canvasSubLayer)
+            let canvasCenter = CGPoint(x: canvasView.bounds.size.width / 2, y: canvasView.bounds.size.height / 2)
+            side1.position = CGPoint(x: canvasCenter.x - 50, y: canvasCenter.y)
+            side2.position = CGPoint(x: canvasCenter.x + 50, y: canvasCenter.y)
+            side3.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
+            side4.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y + 50)
+            side5.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
+            side6.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y)
 
+            canvasView.layer?.addSublayer(canvasSubLayer)
             canvasSubLayer.addSublayer(side1)
             canvasSubLayer.addSublayer(side2)
             canvasSubLayer.addSublayer(side3)
@@ -106,21 +113,13 @@ class BoxViewController: NSViewController {
         }
     }
 
-    func degreesToRadians(degrees: Double) -> Double {
-        return degrees * 2 * M_PI / 360
+    override func viewWillLayout() {
+        // The view wants to change this back to true for us.
+        canvasView.layer?.masksToBounds = false
     }
 
-    override func viewWillLayout() {
-        canvasSubLayer.frame = canvasView.bounds
-        canvasSubLayer.frame = CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 300))
-
-        let canvasCenter = CGPoint(x: canvasView.bounds.size.width / 2, y: canvasView.bounds.size.height / 2)
-        side1.position = CGPoint(x: canvasCenter.x - 50, y: canvasCenter.y)
-        side2.position = CGPoint(x: canvasCenter.x + 50, y: canvasCenter.y)
-        side3.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
-        side4.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y + 50)
-        side5.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y - 50)
-        side6.position = CGPoint(x: canvasCenter.x, y: canvasCenter.y)
+    func degreesToRadians(degrees: Double) -> Double {
+        return degrees * 2 * M_PI / 360
     }
 
     @IBAction func showZChanged(sender: AnyObject) {
@@ -156,7 +155,6 @@ class BoxViewController: NSViewController {
         }
     }
 
-
     @IBAction func didPan(panner: NSPanGestureRecognizer) {
         let disp = panner.translationInView(canvasView)
         if (.Began == panner.state) {
@@ -167,10 +165,6 @@ class BoxViewController: NSViewController {
         let angle = sqrt(disp.x * disp.x + disp.y * disp.y)
         println("angle: \(angle)")
         let transform = CATransform3DMakeRotation(CGFloat(degreesToRadians(Double(angle))), disp.y, disp.x, 0)
-//        canvasSubLayer.transform = transform
-        let eyeZ = 500.0
-        var perspective = CATransform3DIdentity
-        perspective.m34 = -1.0 / CGFloat(eyeZ)
         canvasSubLayer.sublayerTransform = CATransform3DConcat(transform, perspective)
     }
 }

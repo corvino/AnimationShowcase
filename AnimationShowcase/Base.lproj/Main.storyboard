@@ -771,8 +771,19 @@
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="iPX-Qv-y0v" userLabel="Canvas">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dSX-nR-Q9y" userLabel="BoxContainer">
+                                        <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="UZp-q5-7je"/>
+                                            <constraint firstAttribute="width" constant="300" id="jCe-vo-fX8"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="dSX-nR-Q9y" secondAttribute="centerX" id="D4o-Za-sVj"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="600" id="JLI-XH-vY7"/>
+                                    <constraint firstAttribute="centerY" secondItem="dSX-nR-Q9y" secondAttribute="centerY" id="rXR-oH-smu"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="vLp-Yk-ypa"/>
                                 </constraints>
                                 <gestureRecognizers>
@@ -797,7 +808,7 @@
                     <connections>
                         <outlet property="boxCheckbox" destination="jRw-d9-070" id="8u6-ek-uPy"/>
                         <outlet property="buttonBarView" destination="BGJ-JK-pej" id="Z4U-9M-84Q"/>
-                        <outlet property="canvasView" destination="iPX-Qv-y0v" id="BWP-kp-4Te"/>
+                        <outlet property="canvasView" destination="dSX-nR-Q9y" id="6LP-DB-dHY"/>
                         <outlet property="openCheckbox" destination="Drs-Qg-yb1" id="n3f-TJ-qPg"/>
                         <outlet property="showZ" destination="YQ4-js-ytG" id="tA5-xa-2fK"/>
                         <outlet property="showZChanged" destination="YQ4-js-ytG" id="mpB-jr-88F"/>
