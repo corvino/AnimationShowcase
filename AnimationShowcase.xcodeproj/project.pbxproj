@@ -11,21 +11,10 @@
 		27E90CAB1B8245CC00C09C8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E90CAA1B8245CC00C09C8D /* ViewController.swift */; };
 		27E90CAD1B8245CC00C09C8D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E90CAC1B8245CC00C09C8D /* Images.xcassets */; };
 		27E90CB01B8245CC00C09C8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E90CAE1B8245CC00C09C8D /* Main.storyboard */; };
-		27E90CBC1B8245CC00C09C8D /* AnimationShowcaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E90CBB1B8245CC00C09C8D /* AnimationShowcaseTests.swift */; };
 		27E90CC61B82469100C09C8D /* BoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E90CC51B82469100C09C8D /* BoxViewController.swift */; };
 		27E90CC81B82487D00C09C8D /* SparkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E90CC71B82487D00C09C8D /* SparkView.swift */; };
 		27E90CCA1B82489F00C09C8D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E90CC91B82489F00C09C8D /* spark.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		27E90CB61B8245CC00C09C8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27E90C9B1B8245CC00C09C8D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 27E90CA21B8245CC00C09C8D;
-			remoteInfo = AnimationShowcase;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		27E90CA31B8245CC00C09C8D /* AnimationShowcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,9 +23,6 @@
 		27E90CAA1B8245CC00C09C8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		27E90CAC1B8245CC00C09C8D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		27E90CAF1B8245CC00C09C8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		27E90CB51B8245CC00C09C8D /* AnimationShowcaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationShowcaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27E90CBA1B8245CC00C09C8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27E90CBB1B8245CC00C09C8D /* AnimationShowcaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationShowcaseTests.swift; sourceTree = "<group>"; };
 		27E90CC51B82469100C09C8D /* BoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxViewController.swift; sourceTree = "<group>"; };
 		27E90CC71B82487D00C09C8D /* SparkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkView.swift; sourceTree = "<group>"; };
 		27E90CC91B82489F00C09C8D /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -50,13 +36,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27E90CB21B8245CC00C09C8D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -64,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				27E90CA51B8245CC00C09C8D /* AnimationShowcase */,
-				27E90CB81B8245CC00C09C8D /* AnimationShowcaseTests */,
 				27E90CA41B8245CC00C09C8D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				27E90CA31B8245CC00C09C8D /* AnimationShowcase.app */,
-				27E90CB51B8245CC00C09C8D /* AnimationShowcaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,23 +78,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		27E90CB81B8245CC00C09C8D /* AnimationShowcaseTests */ = {
-			isa = PBXGroup;
-			children = (
-				27E90CBB1B8245CC00C09C8D /* AnimationShowcaseTests.swift */,
-				27E90CB91B8245CC00C09C8D /* Supporting Files */,
-			);
-			path = AnimationShowcaseTests;
-			sourceTree = "<group>";
-		};
-		27E90CB91B8245CC00C09C8D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				27E90CBA1B8245CC00C09C8D /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,24 +98,6 @@
 			productReference = 27E90CA31B8245CC00C09C8D /* AnimationShowcase.app */;
 			productType = "com.apple.product-type.application";
 		};
-		27E90CB41B8245CC00C09C8D /* AnimationShowcaseTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27E90CC21B8245CC00C09C8D /* Build configuration list for PBXNativeTarget "AnimationShowcaseTests" */;
-			buildPhases = (
-				27E90CB11B8245CC00C09C8D /* Sources */,
-				27E90CB21B8245CC00C09C8D /* Frameworks */,
-				27E90CB31B8245CC00C09C8D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				27E90CB71B8245CC00C09C8D /* PBXTargetDependency */,
-			);
-			name = AnimationShowcaseTests;
-			productName = AnimationShowcaseTests;
-			productReference = 27E90CB51B8245CC00C09C8D /* AnimationShowcaseTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -167,10 +109,6 @@
 				TargetAttributes = {
 					27E90CA21B8245CC00C09C8D = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					27E90CB41B8245CC00C09C8D = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 27E90CA21B8245CC00C09C8D;
 					};
 				};
 			};
@@ -188,7 +126,6 @@
 			projectRoot = "";
 			targets = (
 				27E90CA21B8245CC00C09C8D /* AnimationShowcase */,
-				27E90CB41B8245CC00C09C8D /* AnimationShowcaseTests */,
 			);
 		};
 /* End PBXProject section */
@@ -201,13 +138,6 @@
 				27E90CAD1B8245CC00C09C8D /* Images.xcassets in Resources */,
 				27E90CCA1B82489F00C09C8D /* spark.png in Resources */,
 				27E90CB01B8245CC00C09C8D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		27E90CB31B8245CC00C09C8D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,23 +155,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27E90CB11B8245CC00C09C8D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27E90CBC1B8245CC00C09C8D /* AnimationShowcaseTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		27E90CB71B8245CC00C09C8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 27E90CA21B8245CC00C09C8D /* AnimationShowcase */;
-			targetProxy = 27E90CB61B8245CC00C09C8D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		27E90CAE1B8245CC00C09C8D /* Main.storyboard */ = {
@@ -357,42 +271,6 @@
 			};
 			name = Release;
 		};
-		27E90CC31B8245CC00C09C8D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = AnimationShowcaseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimationShowcase.app/Contents/MacOS/AnimationShowcase";
-			};
-			name = Debug;
-		};
-		27E90CC41B8245CC00C09C8D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = AnimationShowcaseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimationShowcase.app/Contents/MacOS/AnimationShowcase";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -412,14 +290,7 @@
 				27E90CC11B8245CC00C09C8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		27E90CC21B8245CC00C09C8D /* Build configuration list for PBXNativeTarget "AnimationShowcaseTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27E90CC31B8245CC00C09C8D /* Debug */,
-				27E90CC41B8245CC00C09C8D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

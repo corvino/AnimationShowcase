@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
-//  Box
+//  BoxViewController.swift
+//  AnimationShowcase
 //
-//  Created by Nathan Corvino on 8/15/15.
+//  Created by Nathan Corvino on 8/17/15.
 //  Copyright (c) 2015 Nathan Corvino. All rights reserved.
 //
 
@@ -26,6 +26,7 @@ class BoxViewController: NSViewController {
     var side6 = CALayer()
 
     var perspective = CATransform3DIdentity
+    var startingRotation = CATransform3DIdentity
 
 
     override func viewDidLoad() {
@@ -34,22 +35,13 @@ class BoxViewController: NSViewController {
         perspective.m34 = -1.0 / 500.0
     }
 
-    func addTextToSide(string : String, box : CALayer) {
-        let layer = CATextLayer()
-        let bounds = string.boundingRectWithSize(CGSize(width: 100, height: 100), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName : layer.font])
-        layer.string = string
-        layer.frame = bounds
-
-        layer.position = CGPoint(x: box.bounds.size.width / 2, y: box.bounds.size.height / 2)
-        box.addSublayer(layer)
-    }
-
     override func viewWillAppear() {
         super.viewDidAppear()
 
         if (nil == side1.superlayer) {
             view.layer?.backgroundColor = NSColor.blackColor().CGColor
             canvasSubLayer.frame = canvasView.bounds
+            canvasSubLayer.sublayerTransform = perspective
 
             buttonBarView.layer?.backgroundColor = NSColor.whiteColor().CGColor
 
@@ -118,11 +110,21 @@ class BoxViewController: NSViewController {
         canvasView.layer?.masksToBounds = false
     }
 
+    func addTextToSide(string : String, box : CALayer) {
+        let layer = CATextLayer()
+        let bounds = string.boundingRectWithSize(CGSize(width: 100, height: 100), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName : layer.font])
+        layer.string = string
+        layer.frame = bounds
+
+        layer.position = CGPoint(x: box.bounds.size.width / 2, y: box.bounds.size.height / 2)
+        box.addSublayer(layer)
+    }
+
     func degreesToRadians(degrees: Double) -> Double {
         return degrees * 2 * M_PI / 360
     }
 
-    @IBAction func showZChanged(sender: AnyObject) {
+    @IBAction func showZCheckboxChanged(sender: AnyObject) {
         if (NSOnState == showZ.state) {
             side5.zPosition = 100
         } else {
@@ -143,7 +145,6 @@ class BoxViewController: NSViewController {
             side3.transform = CATransform3DIdentity
             side4.transform = CATransform3DIdentity
             side5.zPosition = 0
-            side6.transform = CATransform3DIdentity
         }
     }
 
@@ -155,16 +156,19 @@ class BoxViewController: NSViewController {
         }
     }
 
+    @IBAction func resetButtonPressed(sender: AnyObject) {
+        startingRotation = CATransform3DIdentity
+        canvasSubLayer.sublayerTransform = perspective
+    }
+
     @IBAction func didPan(panner: NSPanGestureRecognizer) {
         let disp = panner.translationInView(canvasView)
-        if (.Began == panner.state) {
-            println("Began: \(disp)")
-        } else if (.Changed == panner.state) {
-            println("Changed: \(disp)")
-        }
         let angle = sqrt(disp.x * disp.x + disp.y * disp.y)
-        println("angle: \(angle)")
         let transform = CATransform3DMakeRotation(CGFloat(degreesToRadians(Double(angle))), disp.y, disp.x, 0)
-        canvasSubLayer.sublayerTransform = CATransform3DConcat(transform, perspective)
+        canvasSubLayer.sublayerTransform = CATransform3DConcat(CATransform3DConcat(transform, startingRotation), perspective)
+
+        if (.Ended == panner.state) {
+            startingRotation = CATransform3DConcat(transform, startingRotation)
+        }
     }
 }

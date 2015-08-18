@@ -726,18 +726,6 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="BGJ-JK-pej" userLabel="ButtonBar">
                                 <rect key="frame" x="0.0" y="600" width="600" height="50"/>
                                 <subviews>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="YQ4-js-ytG">
-                                        <rect key="frame" x="513" y="16" width="69" height="18"/>
-                                        <buttonCell key="cell" type="check" title="Show Z" bezelStyle="regularSquare" imagePosition="left" inset="2" id="K3v-Hf-pBA">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <string key="keyEquivalent">d</string>
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="showZChanged:" target="fmc-9S-8ad" id="hJD-Ev-P4U"/>
-                                        </connections>
-                                    </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="jRw-d9-070">
                                         <rect key="frame" x="18" y="16" width="47" height="18"/>
                                         <buttonCell key="cell" type="check" title="Box" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fLf-Hg-izD">
@@ -749,7 +737,7 @@
                                         </connections>
                                     </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Drs-Qg-yb1">
-                                        <rect key="frame" x="272" y="16" width="56" height="18"/>
+                                        <rect key="frame" x="96" y="16" width="56" height="18"/>
                                         <buttonCell key="cell" type="check" title="Open" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yjK-X0-SJV">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -758,21 +746,45 @@
                                             <action selector="openCheckboxChanged:" target="fmc-9S-8ad" id="cgw-Z6-IYF"/>
                                         </connections>
                                     </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="YQ4-js-ytG">
+                                        <rect key="frame" x="183" y="16" width="69" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Show Z" bezelStyle="regularSquare" imagePosition="left" inset="2" id="K3v-Hf-pBA">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent">d</string>
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="showZCheckboxChanged:" target="fmc-9S-8ad" id="JiJ-PG-ABS"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeZ-x0-LvU">
+                                        <rect key="frame" x="474" y="14" width="106" height="23"/>
+                                        <buttonCell key="cell" type="smallSquare" title="Reset" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xyu-W5-9ju">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="resetButtonPressed:" target="fmc-9S-8ad" id="uEB-gm-PW4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="Drs-Qg-yb1" secondAttribute="centerX" id="W2v-0y-N5d"/>
-                                    <constraint firstAttribute="trailing" secondItem="YQ4-js-ytG" secondAttribute="trailing" constant="20" id="WM5-YD-99l"/>
+                                    <constraint firstAttribute="centerY" secondItem="xeZ-x0-LvU" secondAttribute="centerY" id="XrR-9q-GSy"/>
+                                    <constraint firstAttribute="trailing" secondItem="xeZ-x0-LvU" secondAttribute="trailing" constant="20" id="an7-ut-0yg"/>
                                     <constraint firstAttribute="centerY" secondItem="jRw-d9-070" secondAttribute="centerY" id="f4d-4S-Xfh"/>
                                     <constraint firstItem="jRw-d9-070" firstAttribute="leading" secondItem="BGJ-JK-pej" secondAttribute="leading" constant="20" id="kHs-fZ-tNs"/>
+                                    <constraint firstItem="Drs-Qg-yb1" firstAttribute="leading" secondItem="jRw-d9-070" secondAttribute="trailing" constant="35" id="pxV-Gf-FcM"/>
+                                    <constraint firstItem="YQ4-js-ytG" firstAttribute="leading" secondItem="Drs-Qg-yb1" secondAttribute="trailing" constant="35" id="sd7-DA-Lqu"/>
                                     <constraint firstAttribute="centerY" secondItem="Drs-Qg-yb1" secondAttribute="centerY" id="thS-lg-6Sh"/>
                                     <constraint firstAttribute="height" constant="50" id="w44-XJ-OQv"/>
                                     <constraint firstAttribute="centerY" secondItem="YQ4-js-ytG" secondAttribute="centerY" id="x5u-MH-x99"/>
                                 </constraints>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="iPX-Qv-y0v" userLabel="Canvas">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="iPX-Qv-y0v" userLabel="TouchPane">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dSX-nR-Q9y" userLabel="BoxContainer">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dSX-nR-Q9y" userLabel="Canvas">
                                         <rect key="frame" x="150" y="150" width="300" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="UZp-q5-7je"/>
