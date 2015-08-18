@@ -42,7 +42,10 @@
 		27E90C9A1B8245CC00C09C8D = {
 			isa = PBXGroup;
 			children = (
-				27E90CA51B8245CC00C09C8D /* AnimationShowcase */,
+				27E90CAC1B8245CC00C09C8D /* Images.xcassets */,
+				27E90CA71B8245CC00C09C8D /* Info.plist */,
+				27E90CC91B82489F00C09C8D /* spark.png */,
+				27E90CA51B8245CC00C09C8D /* Source */,
 				27E90CA41B8245CC00C09C8D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,27 +58,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		27E90CA51B8245CC00C09C8D /* AnimationShowcase */ = {
+		27E90CA51B8245CC00C09C8D /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				27E90CA81B8245CC00C09C8D /* AppDelegate.swift */,
 				27E90CAA1B8245CC00C09C8D /* ViewController.swift */,
 				27E90CC51B82469100C09C8D /* BoxViewController.swift */,
 				27E90CC71B82487D00C09C8D /* SparkView.swift */,
-				27E90CAC1B8245CC00C09C8D /* Images.xcassets */,
 				27E90CAE1B8245CC00C09C8D /* Main.storyboard */,
-				27E90CC91B82489F00C09C8D /* spark.png */,
-				27E90CA61B8245CC00C09C8D /* Supporting Files */,
 			);
-			path = AnimationShowcase;
-			sourceTree = "<group>";
-		};
-		27E90CA61B8245CC00C09C8D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				27E90CA71B8245CC00C09C8D /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +246,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AnimationShowcase/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -265,7 +257,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AnimationShowcase/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
