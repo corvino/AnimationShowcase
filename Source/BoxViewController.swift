@@ -164,7 +164,7 @@ class BoxViewController: NSViewController {
     @IBAction func didPan(panner: NSPanGestureRecognizer) {
         let disp = panner.translationInView(canvasView)
         let angle = sqrt(disp.x * disp.x + disp.y * disp.y)
-        let transform = CATransform3DMakeRotation(CGFloat(degreesToRadians(Double(angle))), disp.y, disp.x, 0)
+        let transform = CATransform3DMakeRotation(CGFloat(degreesToRadians(Double(angle))), -disp.y, disp.x, 0)
         canvasSubLayer.sublayerTransform = CATransform3DConcat(CATransform3DConcat(transform, startingRotation), perspective)
 
         if (.Ended == panner.state) {
