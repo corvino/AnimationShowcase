@@ -691,7 +691,7 @@
         <scene sceneID="NjD-ii-Ki3">
             <objects>
                 <viewController title="Spark" id="aOd-6K-KlM" sceneMemberID="viewController">
-                    <view key="view" id="mK3-zZ-bIU" customClass="UIView">
+                    <view key="view" id="mK3-zZ-bIU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="650"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -768,8 +768,21 @@
                                             <action selector="resetButtonPressed:" target="fmc-9S-8ad" id="uEB-gm-PW4"/>
                                         </connections>
                                     </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="4xp-Wc-e5w">
+                                        <rect key="frame" x="283" y="16" width="95" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Perspective" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Zxq-kv-bOV">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent">d</string>
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="perspectiveCheckboxChanged:" target="fmc-9S-8ad" id="uEz-iK-bd4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="4xp-Wc-e5w" secondAttribute="centerY" id="QNc-sI-yJ2"/>
                                     <constraint firstAttribute="centerY" secondItem="xeZ-x0-LvU" secondAttribute="centerY" id="XrR-9q-GSy"/>
                                     <constraint firstAttribute="trailing" secondItem="xeZ-x0-LvU" secondAttribute="trailing" constant="20" id="an7-ut-0yg"/>
                                     <constraint firstAttribute="centerY" secondItem="jRw-d9-070" secondAttribute="centerY" id="f4d-4S-Xfh"/>
@@ -777,6 +790,7 @@
                                     <constraint firstItem="Drs-Qg-yb1" firstAttribute="leading" secondItem="jRw-d9-070" secondAttribute="trailing" constant="35" id="pxV-Gf-FcM"/>
                                     <constraint firstItem="YQ4-js-ytG" firstAttribute="leading" secondItem="Drs-Qg-yb1" secondAttribute="trailing" constant="35" id="sd7-DA-Lqu"/>
                                     <constraint firstAttribute="centerY" secondItem="Drs-Qg-yb1" secondAttribute="centerY" id="thS-lg-6Sh"/>
+                                    <constraint firstItem="4xp-Wc-e5w" firstAttribute="leading" secondItem="YQ4-js-ytG" secondAttribute="trailing" constant="35" id="uCx-tN-J59"/>
                                     <constraint firstAttribute="height" constant="50" id="w44-XJ-OQv"/>
                                     <constraint firstAttribute="centerY" secondItem="YQ4-js-ytG" secondAttribute="centerY" id="x5u-MH-x99"/>
                                 </constraints>
@@ -822,8 +836,8 @@
                         <outlet property="buttonBarView" destination="BGJ-JK-pej" id="Z4U-9M-84Q"/>
                         <outlet property="canvasView" destination="dSX-nR-Q9y" id="6LP-DB-dHY"/>
                         <outlet property="openCheckbox" destination="Drs-Qg-yb1" id="n3f-TJ-qPg"/>
-                        <outlet property="showZ" destination="YQ4-js-ytG" id="tA5-xa-2fK"/>
-                        <outlet property="showZChanged" destination="YQ4-js-ytG" id="mpB-jr-88F"/>
+                        <outlet property="persepectiveCheckbox" destination="4xp-Wc-e5w" id="2xP-fQ-MxC"/>
+                        <outlet property="showZCheckbox" destination="YQ4-js-ytG" id="ZHp-eH-xCl"/>
                     </connections>
                 </viewController>
                 <customObject id="sue-tX-wsT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -15,7 +15,8 @@ class BoxViewController: NSViewController {
 
     @IBOutlet weak var boxCheckbox: NSButton!
     @IBOutlet weak var openCheckbox: NSButton!
-    @IBOutlet weak var showZ: NSButton!
+    @IBOutlet weak var showZCheckbox: NSButton!
+    @IBOutlet weak var persepectiveCheckbox: NSButton!
 
     var canvasSubLayer = CALayer()
     var side1 = CALayer()
@@ -26,12 +27,14 @@ class BoxViewController: NSViewController {
     var side6 = CALayer()
 
     var perspective = CATransform3DIdentity
+    var orientation = CATransform3DIdentity
     var startingRotation = CATransform3DIdentity
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Homogeneous perspective transform
         perspective.m34 = -1.0 / 500.0
     }
 
@@ -41,7 +44,6 @@ class BoxViewController: NSViewController {
         if (nil == side1.superlayer) {
             view.layer?.backgroundColor = NSColor.blackColor().CGColor
             canvasSubLayer.frame = canvasView.bounds
-            canvasSubLayer.sublayerTransform = perspective
 
             buttonBarView.layer?.backgroundColor = NSColor.whiteColor().CGColor
 
@@ -102,6 +104,8 @@ class BoxViewController: NSViewController {
             canvasSubLayer.addSublayer(side4)
             canvasSubLayer.addSublayer(side6)
             canvasSubLayer.addSublayer(side5)
+
+            applySublayerTransform()
         }
     }
 
@@ -122,14 +126,6 @@ class BoxViewController: NSViewController {
 
     func degreesToRadians(degrees: Double) -> Double {
         return degrees * 2 * M_PI / 360
-    }
-
-    @IBAction func showZCheckboxChanged(sender: AnyObject) {
-        if (NSOnState == showZ.state) {
-            side5.zPosition = 100
-        } else {
-            side5.zPosition = 0
-        }
     }
 
     @IBAction func boxCheckboxChanged(sender: AnyObject) {
@@ -156,19 +152,42 @@ class BoxViewController: NSViewController {
         }
     }
 
+    @IBAction func showZCheckboxChanged(sender: AnyObject) {
+        if (NSOnState == showZCheckbox.state) {
+            side5.zPosition = 100
+        } else {
+            side5.zPosition = 0
+        }
+    }
+
+    @IBAction func perspectiveCheckboxChanged(sender: AnyObject) {
+        applySublayerTransform()
+    }
+
     @IBAction func resetButtonPressed(sender: AnyObject) {
         startingRotation = CATransform3DIdentity
-        canvasSubLayer.sublayerTransform = perspective
+        applySublayerTransform()
     }
 
     @IBAction func didPan(panner: NSPanGestureRecognizer) {
         let disp = panner.translationInView(canvasView)
         let angle = sqrt(disp.x * disp.x + disp.y * disp.y)
-        let transform = CATransform3DMakeRotation(CGFloat(degreesToRadians(Double(angle))), -disp.y, disp.x, 0)
-        canvasSubLayer.sublayerTransform = CATransform3DConcat(CATransform3DConcat(transform, startingRotation), perspective)
+        orientation = CATransform3DMakeRotation(CGFloat(degreesToRadians(Double(angle))), -disp.y, disp.x, 0)
+        applySublayerTransform()
 
         if (.Ended == panner.state) {
-            startingRotation = CATransform3DConcat(transform, startingRotation)
+            startingRotation = CATransform3DConcat(orientation, startingRotation)
+            orientation = CATransform3DIdentity
+        }
+    }
+
+    func applySublayerTransform() {
+        let transform = CATransform3DConcat(orientation, startingRotation)
+
+        if (NSOnState == persepectiveCheckbox.state) {
+            canvasSubLayer.sublayerTransform = CATransform3DConcat(transform, perspective)
+        } else {
+            canvasSubLayer.sublayerTransform = transform
         }
     }
 }
